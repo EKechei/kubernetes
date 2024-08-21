@@ -25,4 +25,7 @@
 # Installing Kubernetes on a Laptop
 
 1. Install Minikube
-2. Install Kubectl
+```
+   https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+```
+3. Install Kubectl
