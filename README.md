@@ -62,10 +62,47 @@ While Kubernetes allows you to manage application workloads by directly creating
 
 | Feature                      | Direct Pod Creation                                   | Deployments                                      |
 |------------------------------|-------------------------------------------------------|---------------------------------------------------|
-| **Self-Healing**             | Manual intervention needed to restart failed Pods.    | Automatically replaces failed or deleted Pods.    |
+| **Self-Healing**             | Manual intervention is needed to restart failed Pods. | Automatically replaces failed or deleted Pods.    |
 | **Scaling**                  | Manual process to add or remove Pods.                 | Easily scalable by adjusting replica count.       |
 | **Updates**                  | Requires manual update process, risk of downtime.     | Supports rolling updates with zero downtime.      |
 | **Configuration Consistency**| Inconsistent, prone to manual errors.                 | Ensures consistent configuration across all Pods. |
 | **Management Style**         | Imperative and manual.                                | Declarative, automated, and efficient.            |
 
 
+# Deployments
+
+A Deployment provides declarative updates for Pods and ReplicaSets.
+
+You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets or to remove existing Deployments and adopt all their resources with new Deployments.
+
+## Creating a Deployment
+
+The following is an example of a Deployment. It creates a ReplicaSet to bring up three nginx Pods:
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
+```
+
+Create the Deployment by running the following command:
+``` kubectl apply -f deployment.yaml ```
