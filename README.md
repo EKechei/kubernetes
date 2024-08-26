@@ -138,6 +138,28 @@ For example, after setting up a Deployment for a web application, you would crea
 ## Service types
 
 **ClusterIP** - is accessed inside a Kubernetes cluster.
+
 **NodePort** - is accessible within your organization, typically through a node’s IP and a specific port.
+
 **LoadBalancer** - is exposed to the external world, providing a public IP for external access.
+
 **ExternalName** - maps the Service to an external DNS name, allowing access to external services or databases.
+
+
+Example Service YAML:
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+```
