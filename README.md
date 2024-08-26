@@ -57,7 +57,7 @@ To create the Pod shown above, run the following command:
 ## Direct Pod Creation vs. Deployments: Which Should You Choose in Kubernetes?
 While Kubernetes allows you to manage application workloads by directly creating Pods, this approach often falls short in production environments. Let's compare direct Pod creation with using Deployments:
 
-```
+
 ## Comparison of Direct Pod Creation and Deployments in Kubernetes
 
 | Feature                      | Direct Pod Creation                                   | Deployments                                      |
@@ -68,4 +68,4 @@ While Kubernetes allows you to manage application workloads by directly creating
 | **Configuration Consistency**| Inconsistent, prone to manual errors.                 | Ensures consistent configuration across all Pods. |
 | **Management Style**         | Imperative and manual.                                | Declarative, automated, and efficient.            |
 
-```
+
