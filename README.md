@@ -123,7 +123,21 @@ Services provide a stable networking endpoint for accessing Pods, offering sever
 
 - **Load Balancing**: Services automatically distribute traffic across multiple Pods, balancing the load and enhancing the availability of your application.
 
--**Service Discovery**: By using DNS names, Services allow different components of your application to find and communicate with each other easily.
+- **Service Discovery**: By using DNS names, Services allow different components of your application to find and communicate with each other easily.
 
 - **Exposure Types**: Services can be configured to expose applications internally within the cluster or externally to the outside world, based on your needs.
 
+
+## How Services Work with Deployments
+
+When you deploy an application using a Deployment, you typically need a way to expose and access that application. This is where Services come into play. You create a Service that targets the Pods created by your Deployment. This Service then provides a stable endpoint for clients to access the application, handles load balancing, and facilitates service discovery.
+
+For example, after setting up a Deployment for a web application, you would create a Service to expose this application to users. The Service would ensure that users can access the application consistently, even if the underlying Pods are scaled or updated.
+
+
+## Service types
+
+**ClusterIP** - is accessed inside a Kubernetes cluster.
+**NodePort** - is accessible within your organization, typically through a node’s IP and a specific port.
+**LoadBalancer** - is exposed to the external world, providing a public IP for external access.
+**ExternalName** - maps the Service to an external DNS name, allowing access to external services or databases.
