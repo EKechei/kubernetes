@@ -176,9 +176,10 @@ Ingress is an API object that manages external access to services within a clust
 - This is a specialized load balancer responsible for implementing the Ingress rules and managing the traffic.
 - It watches for changes in Ingress resources and configures a proxy (like Nginx, Traefik) to route traffic.
 - Without an Ingress Controller, the Ingress resource does nothing.
+  
 2. **Ingress Resource**:
-
-This is a YAML configuration file where you define rules for routing HTTP/HTTPS traffic. These rules can specify:
+   
+ This is a YAML configuration file where you define rules for routing HTTP/HTTPS traffic. These rules can specify:
 - Which host(s) and path(s) the traffic is coming from.
 - Which backend service(s) the traffic should be directed to.
 
