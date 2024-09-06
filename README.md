@@ -179,7 +179,7 @@ Ingress is an API object that manages external access to services within a clust
   
 2. **Ingress Resource**:
    
- This is a YAML configuration file where you define rules for routing HTTP/HTTPS traffic. These rules can specify:
+  This is a YAML configuration file where you define rules for routing HTTP/HTTPS traffic. These rules can specify:
 - Which host(s) and path(s) the traffic is coming from.
 - Which backend service(s) the traffic should be directed to.
 
