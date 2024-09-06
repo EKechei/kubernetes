@@ -182,6 +182,53 @@ This is a YAML configuration file where you define rules for routing HTTP/HTTPS 
 - Which host(s) and path(s) the traffic is coming from.
 - Which backend service(s) the traffic should be directed to.
 
+### Ingress Example
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  namespace: development
+spec:
+  rules:
+  - host: myapp.example.com
+    http:
+      paths:
+      - path: /app1
+        pathType: Prefix
+        backend:
+          service:
+            name: app1-service
+            port:
+              number: 80
+      - path: /app2
+        pathType: Prefix
+        backend:
+          service:
+            name: app2-service
+            port:
+              number: 80
+
+```
+
+
+### How It Works:
+- The host ```myapp.example.com``` is the domain through which external users will access your services.
+- Traffic coming to ```/app1``` is routed to ```app1-service``` and traffic to ```/app2``` is routed to ```app2-service```.
+- The **Ingress Controller** handles this redirection behind the scenes.
+
+### Benefits of Using Ingress:
+- **Consolidated Entry Point**: Instead of creating multiple ```LoadBalancer``` services (each with its own public IP), you can use Ingress to route traffic from a single IP or domain to multiple services.
+- **Flexible Routing**: You can define sophisticated routing rules based on paths, hosts, or other criteria.
+- **SL/TLS Termination**: Ingress allows for centralized SSL certificate management, so you can handle HTTPS connections at the Ingress level.
+- **Rewrite/Redirect**: Ingress supports URL rewriting or redirects.
+
+
+
+
+
+
 
 
 
