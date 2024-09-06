@@ -163,3 +163,38 @@ spec:
   type: LoadBalancer
 
 ```
+
+
+# Ingress
+
+Ingress is an API object that manages external access to services within a cluster, typically HTTP and HTTPS traffic. It acts as a smart routing layer, allowing you to define rules for how external requests are directed to your internal services, rather than exposing each service with individual ```NodePort``` or ```LoadBalancer``` services.
+
+## Components of Ingress:
+
+1. **Ingress Controller**:
+
+- This is a specialized load balancer responsible for implementing the Ingress rules and managing the traffic.
+- It watches for changes in Ingress resources and configures a proxy (like Nginx, Traefik) to route traffic.
+- Without an Ingress Controller, the Ingress resource does nothing.
+2. **Ingress Resource**:
+
+This is a YAML configuration file where you define rules for routing HTTP/HTTPS traffic. These rules can specify:
+- Which host(s) and path(s) the traffic is coming from.
+- Which backend service(s) the traffic should be directed to.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
