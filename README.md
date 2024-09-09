@@ -189,8 +189,9 @@ Ingress is an API object that manages external access to services within a clust
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
-  namespace: development
+  name: nginx-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: myapp.example.com
@@ -200,23 +201,14 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: app1-service
+            name: nginx-service
             port:
               number: 80
-      - path: /app2
-        pathType: Prefix
-        backend:
-          service:
-            name: app2-service
-            port:
-              number: 80
-
 ```
 
 
 ### How It Works:
-- The host ```myapp.example.com``` is the domain through which external users will access your services.
-- Traffic coming to ```/app1``` is routed to ```app1-service``` and traffic to ```/app2``` is routed to ```app2-service```.
+- This Ingress resource will route HTTP requests sent to ```myapp.example.com``` with paths starting with ```/app1``` to the ```nginx-service``` service on port 80. The annotation ensures that the URL path is rewritten before forwarding to the backend service.
 - The **Ingress Controller** handles this redirection behind the scenes.
 
 ### Benefits of Using Ingress:
